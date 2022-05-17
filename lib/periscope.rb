@@ -5,7 +5,7 @@ module Periscope
   end
 
   def periscope(params = {})
-    params.inject(periscope_default_scope) do |chain, (scope, param)|
+    params.to_h.inject(periscope_default_scope) do |chain, (scope, param)|
       periscope_call(chain, scope.to_s, param)
     end
   end
