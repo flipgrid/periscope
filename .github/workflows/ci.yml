@@ -21,27 +21,3 @@ jobs:
       - name: Build and test with Rake
         run: |
           bundle exec rspec
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        if: always()
-        with:
-          files: test_results/**/*.xml
-      - name: Code Coverage Summary Report
-        uses: irongut/CodeCoverageSummary@v1.2.0
-        with:
-          filename: coverage/coverage.xml
-          badge: true
-          format: 'markdown'
-          output: 'both'
-      - name: Add Coverage PR Comment
-        uses: marocchino/sticky-pull-request-comment@v2
-        if: github.event_name == 'pull_request'
-        with:
-          recreate: true
-          path: code-coverage-results.md
-      - name: Upload coverage results
-        uses: actions/upload-artifact@master
-        if: always()
-        with:
-          name: coverage-report
-          path: coverage
