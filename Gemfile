@@ -6,6 +6,13 @@ gemspec name: "periscope-data_mapper"
 gemspec name: "periscope-mongo_mapper"
 gemspec name: "periscope-mongoid"
 
+group :test, :development do
+  gem "rubocop-github"
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+end
+
+
 group :test do
   gem "codeclimate-test-reporter", require: false
   gem "database_cleaner", "~> 1.2.0"
